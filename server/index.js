@@ -18,11 +18,11 @@ app.get("/api/players", async (req, res) => {
 });
 
 app.post("/api/players", async (req, res) => {
-  const {first_name, last_name, alias, position, age, team, image} = req.body
+  const {name, position, age, team, image} = req.body
   try {
     const result = await pool.query(
-      "INSERT INTO players (first_name, last_name, alias, position, age, team, image) VALUES ($1, $2, $3, $4, $5, $6, $7)",
-      [first_name, last_name, alias, position, age, team, image]
+      "INSERT INTO players (name, position, age, team, image) VALUES ($1, $2, $3, $4, $5)",
+      [name, position, age, team, image]
     );
     res.status(201).json(result.rows);
   } catch (err) {
@@ -48,11 +48,11 @@ app.get("/api/coaches", async (req, res) => {
 });
 
 app.post("/api/coaches", async (req, res) => {
-  const {first_name, last_name, alias, age, team, image} = req.body
+  const {name, age, team, image} = req.body
   try {
     const result = await pool.query(
-      "INSERT INTO coaches (first_name, last_name, alias, age, team, image) VALUES ($1, $2, $3, $4, $5, $6)",
-      [first_name, last_name, alias, age, team, image]
+      "INSERT INTO coaches (name, age, team, image) VALUES ($1, $2, $3, $4)",
+      [name, age, team, image]
     );
     res.status(201).json(result.rows);
   } catch (err) {
