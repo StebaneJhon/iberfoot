@@ -7,6 +7,7 @@ CREATE TABLE players (
     id SERIAL PRIMARY KEY,
     name TEXT NOT NULL,
     age INT,
+    position TEXT,
     team TEXT,
     image TEXT
 );

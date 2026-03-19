@@ -1,1 +1,6 @@
 
+.image-container {
+    height: 350px;
+    width: 300px;
+    background-color: teal;
+}
