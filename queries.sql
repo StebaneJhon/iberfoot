@@ -5,17 +5,16 @@ CREATE TABLE admins (
 
 CREATE TABLE players (
     id SERIAL PRIMARY KEY,
-    first_name TEXT NOT NULL,
-    last_name TEXT NOT NULL,
-    position TEXT,
+    name TEXT NOT NULL,
     age INT,
-    team TEXT
+    team TEXT,
+    image TEXT
 );
 
 CREATE TABLE coaches (
     id SERIAL PRIMARY KEY,
-    first_name TEXT NOT NULL,
-    last_name TEXT NOT NULL,
+    name TEXT NOT NULL,
     age INT,
-    team TEXT
+    team TEXT,
+    image TEXT
 );
