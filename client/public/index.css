@@ -1,6 +1,211 @@
 
+body {
+    background-color: rgba(48, 56, 65, 1);
+    color: rgba(250, 250, 250, 1);
+    font-family: "Roboto", sans-serif;
+    font-size: 16px;
+    margin: 0px;
+}
+
+h1 {
+  font-size: 9rem;
+  line-height: 0.9;
+  letter-spacing: -3px;
+  margin-bottom: 32px;
+  font-weight: 700;
+  font-family: "Oswald", sans-serif;
+}
+
+
+.hero-container {
+  position: relative;
+  width: 100%;
+  height: 100vh; 
+  overflow: hidden;
+}
+
+.hero-content p {
+    margin: 0px;
+}
+
+.hero-bg-image {
+  position: absolute;
+  top: 50%; 
+  left: 50%; 
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 1;
+  /* 1. Added Transform to Zoom (Scale: 1.15 = 115%) */
+  transform: translate(-50%, -50%) scale(1.07);
+  transform-origin: center center; 
+}
+
+.hero-overlays-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+}
+
+.radial-light {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  /* - Center light increased to 0.4 (40% opacity white)
+     - Light concentration changed from 60% down to 45% for a stronger 'hotspot' effect.
+  */
+  background: radial-gradient(circle at center, rgba(255, 255, 255, 0.4) 0%, transparent 45%);
+}
+
+.dark-shadow-overlay {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  /* - We make the center mostly transparent.
+     - As it gets further out, it becomes 80% black.
+  */
+  background: radial-gradient(circle at center, rgba(0, 0, 0, 0.3) 0%, rgba(0, 0, 0, 0.8) 100%);
+}
+
+.nav_bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    margin: 0 32px;
+    position: relative;
+    z-index: 3;
+}
+
+.container-nav-bar-logo {
+    width: 182px;
+    height: 38px;
+}
+
+.nav-bar-logo {
+    width: 100%;
+    height: 100%;
+}
+
+.container-btn-nav-bar {
+    display: flex;
+    gap: 24px;
+}
+
+.hero-btn-container {
+    display: flex;
+    gap: 24px;
+    justify-content: center;
+    margin-top: 32px;
+}
+
+.btn-nav-bar {
+  border: none;
+  color: rgba(250, 250, 250, 1);
+  text-decoration: none;
+}
+
+.view-players-btn {
+    background-color: rgba(250, 250, 250, 1);
+    color: rgba(48, 56, 65, 1);
+    padding: 8px 24px;
+}
+
+.btn-contact-us {
+    background-color: rgba(33, 133, 213, 1);
+    padding: 8px 24px;
+    margin-left: 8px;
+}
+
+.hero-texts-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+
+.hero-content {
+  position: relative;
+  z-index: 3; 
+  max-width: 800px;
+  padding: 0 20px;
+}
+
 .image-container {
     height: 350px;
     width: 300px;
     background-color: teal;
+}
+
+.player-image {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    vertical-align: middle;
+}
+
+.slider-container {
+  width: 100%;
+  padding: 20px 0;
+}
+
+.player-container {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    padding: 8px;
+}
+
+.player-details-texts {
+    font-weight: 500;
+    margin: 0;
+}
+
+.player-position {
+    text-transform: uppercase;
+}
+
+.player-name {
+    font-size: 21px;
+    font-weight: 700;
+    color: rgba(33, 133, 213, 1);
+}
+
+
+
+.slider-content {
+  display: flex;
+  overflow-x: auto; /* Enables scrolling */
+  scroll-behavior: smooth;
+  gap: 20px;
+  padding: 10px;
+  /* Hide scrollbar for Chrome, Safari and Opera */
+  scrollbar-width: none; /* Firefox */
+}
+
+.slider-content::-webkit-scrollbar {
+  display: none; /* Chrome/Safari */
+}
+
+.nav-btn-container {
+    display: flex;
+    justify-content: end;
+    gap: 24px;
+}
+
+.nav-btn {
+  border: none;
+  background-color: rgba(48, 56, 65, 1);
+  color: rgba(250, 250, 250, 1);
+  cursor: pointer;
+  z-index: 10;
 }

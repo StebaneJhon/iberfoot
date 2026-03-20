@@ -1,10 +1,11 @@
 function Player(props) {
     const {name, position, team, imageUrl} = props
     return (
-        <div>
+        <div className="player-container">
             <div className="image-container">
                 {imageUrl ? (
                     <img 
+                    className="player-image"
                     src={imageUrl} 
                     alt={name} 
                 />
@@ -15,9 +16,9 @@ function Player(props) {
                 )}
                 
             </div>
-            <p>{name}</p>
-            <p>{position}</p>
-            <p>{team}</p>
+            <p className="player-details-texts player-position" >{position}</p>
+            <p className="player-details-texts  player-name" >{name}</p>
+            <p className="player-details-texts  player-team" >{team}</p>
         </div>
     )
 };
