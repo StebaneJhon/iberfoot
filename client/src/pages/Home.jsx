@@ -1,9 +1,8 @@
 import { useEffect } from "react";
 import { useState } from "react";
-import Player from "../components/Player";
-import HorizontalSlider from "../components/HorizontalSlider";
-import NavBar from "../components/NavBar";
 import Hero from "../components/Hero";
+import Players from "../components/Players";
+import Services from "../components/Services";
 
 const API_URL = '/api/players'
 
@@ -21,7 +20,8 @@ function Home() {
 
     return <div>
         <Hero />
-        <HorizontalSlider players={players} />
+        <Players players={players} />
+        <Services />
     </div>
 }
 

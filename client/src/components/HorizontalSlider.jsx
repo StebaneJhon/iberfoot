@@ -23,7 +23,6 @@ function HorizontalSlider({ players }) {
 
   return (
     <div className="slider-container">
-      
       <div className="slider-content" ref={scrollRef}>
         {players.map(function(player) {
           return (
