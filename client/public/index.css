@@ -1,3 +1,18 @@
+:root {
+  --color-surface-lowest: rgba(48, 56, 65, 1);
+  --color-surface-low: rgba(58, 71, 80, 1);
+  --color-on-surface: rgba(250, 250, 250, 1);
+  --color-primary: rgba(33, 133, 213, 1);
+  --color-secondary: rgba(243, 243, 243, 1);
+  --color-on-orimary: rgba(250, 250, 250, 1);
+  --body-base: 21px;
+  --label-base: 16px;
+}
+  
+
+input, button, select, textarea {
+  font: inherit;
+}
 
 body {
     background-color: rgba(48, 56, 65, 1);
@@ -284,4 +299,53 @@ h3 {
   display: flex;
   flex-direction: column;
   gap: 24px;
+}
+
+.write-to-us-container {
+  padding: 48px 32px;
+}
+
+.text-input-container {
+  display: grid;
+}
+
+.text-input-label {
+  font-size: 16px;
+  margin-bottom: 4px;
+}
+
+.text-input-field {
+  border-radius: 0px;
+  background: var(--color-surface-low);
+  border: none;
+  width: 100%;
+  height: 54px;
+  color: var(--color-on-surface);
+}
+
+.write-to-us-info {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+  grid-template-columns: 1fr 1fr;
+  gap: 34px;
+}
+
+.text-input-xl-container {
+  grid-column: span 2;
+  min-height: 250px;
+}
+
+.text-input-xl-field {
+  border-radius: 0px;
+  background: var(--color-surface-low);
+  border: none;
+  width: 100%;
+  height: 100%;
+  color: var(--color-on-surface);
+}
+
+.write-to-us-info-submint-btn {
+  grid-column: span 2;
+  background-color: var(--color-primary);
+  padding: 8px 24px;
 }

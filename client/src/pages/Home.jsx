@@ -3,6 +3,7 @@ import { useState } from "react";
 import Hero from "../components/Hero";
 import Players from "../components/Players";
 import Services from "../components/Services";
+import WriteToUs from "../components/WriteToUs";
 
 const API_URL = '/api/players'
 
@@ -22,6 +23,7 @@ function Home() {
         <Hero />
         <Players players={players} />
         <Services />
+        <WriteToUs />
     </div>
 }
 

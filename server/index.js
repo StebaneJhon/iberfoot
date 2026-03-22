@@ -26,7 +26,6 @@ app.use('/uploads', express.static('uploads'));
 
 
 app.get('/api/players', async (req, res) => {
-  console.log("Getting players")
   try {
     const result = await pool.query("SELECT * FROM players;");
     res.json(result.rows);
@@ -39,7 +38,6 @@ app.post('/api/players', upload.single('image'), async (req, res) => {
   console.log(req.body)
   const {name, position, age, team} = req.body
   const image = req.file ? `http://localhost:3000/uploads/${req.file.filename}` : null;
-  console.log("Image uploaded")
   try {
     const result = await pool.query(
       "INSERT INTO players (name, position, age, team, image) VALUES ($1, $2, $3, $4, $5) RETURNING *",
