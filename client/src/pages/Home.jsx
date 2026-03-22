@@ -4,6 +4,7 @@ import Hero from "../components/Hero";
 import Players from "../components/Players";
 import Services from "../components/Services";
 import WriteToUs from "../components/WriteToUs";
+import Footer from "../components/Footer";
 
 const API_URL = '/api/players'
 
@@ -24,6 +25,10 @@ function Home() {
         <Players players={players} />
         <Services />
         <WriteToUs />
+        <div className="footer-section">
+            <Footer />
+        </div>
+        
     </div>
 }
 
