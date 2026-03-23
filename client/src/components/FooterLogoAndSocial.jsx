@@ -9,13 +9,13 @@ function FooterLogoAndSoctial() {
             </div>
             <div className="socials-container">
                 <div className="social-btn">
-
+                    <i class="fa-brands fa-linkedin"></i>
                 </div>
                 <div className="social-btn">
-
+                    <i class="fa-brands fa-square-facebook"></i>
                 </div>
                 <div className="social-btn">
-
+                    <i class="fa-brands fa-square-instagram"></i>
                 </div>
             </div>
         </div>

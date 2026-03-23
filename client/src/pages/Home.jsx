@@ -23,8 +23,12 @@ function Home() {
     return <div>
         <Hero />
         <Players players={players} />
-        <Services />
-        <WriteToUs />
+        <div className="our-services-section">
+            <Services />
+        </div>
+        <div className="write-to-us-section">
+            <WriteToUs />
+        </div>
         <div className="footer-section">
             <Footer />
         </div>

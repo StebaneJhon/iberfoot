@@ -42,6 +42,8 @@ function HorizontalSlider({ players }) {
         <button className="nav-btn left" onClick={function() { scroll('left') }}> <WestIcon /> </button>
         <button className="nav-btn right" onClick={function() { scroll('right') }}> <EastIcon /> </button>
       </div>
+
+      <button className='btn-nav-bar view-all-players-btn'>View all</button>
       
     </div>
   );

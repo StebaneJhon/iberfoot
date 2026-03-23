@@ -6,7 +6,9 @@ function Footer(props) {
     return (
         <div className="footer-section-container">
             <div className="footer-details">
-                <FooterLogoAndSoctial />
+                <div className="footer-logo-socials-section-container">
+                    <FooterLogoAndSoctial/>
+                </div>
                 <FooterDetailSection 
                     title="CONTACT US"
                     contents={["+351 21 123 4567", "info@elitesports.pt"]}
@@ -21,7 +23,7 @@ function Footer(props) {
                 />
             </div>
             <hr />
-            <div className="copyright-container">
+            <div className="cop">
                 <p id="copyright">© {year} Iberfoot. All rights reserved.</p>
             </div>
         </div>
