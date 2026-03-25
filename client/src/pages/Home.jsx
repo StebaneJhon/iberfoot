@@ -18,8 +18,6 @@ function Home() {
             .then(data => setPlayers(data))
     }, []);
 
-    console.log(players);
-
     return <div>
         <Hero />
         <Players players={players} />

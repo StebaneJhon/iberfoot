@@ -68,6 +68,19 @@ hr {
   background-color: var(--color-on-surface);
 }
 
+button {
+  padding: 8px 24px;
+  border: none;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  vertical-align: middle;
+  object-position: top;
+}
+
 .hero-container {
   position: relative;
   width: 100%;
@@ -195,14 +208,6 @@ hr {
     height: 472px;
     width: 434px;
     background-color: teal;
-}
-
-.player-image {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
-    vertical-align: middle;
-    object-position: top;
 }
 
 .slider-container {
@@ -349,16 +354,25 @@ hr {
   display: grid;
 }
 
+.text-input-centered-container {
+  display: grid;
+}
+
 .text-input-label {
   font-size: var(--label-base);
   margin-bottom: 4px;
+}
+
+.text-input-centered-label {
+  font-size: var(--label-base);
+  margin-bottom: 8px;
+  text-align: center;
 }
 
 .text-input-field {
   border-radius: 0px;
   background: var(--color-surface-low);
   border: none;
-  width: 100%;
   height: 54px;
   color: var(--color-on-surface);
 }
@@ -446,6 +460,137 @@ hr {
   margin-bottom: 0px;
 }
 
+.log-in-form {
+  max-width: 500px;
+  min-width: 400px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.log-in-container {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.log-in-btn {
+  width: 100%;
+  background-color: var(--color-secondary);
+  color: var(--color-surface-lowest);
+}
+
+.insert-player-form {
+  display: grid;
+  gap: 16px;
+  padding: 16px;
+  background-color: var(--color-surface-low);
+  margin-top: 32px;
+}
+
+.form-layout-row {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+  margin-bottom: 20px;
+}
+
+.player-img-upload-box {
+  width: 357px;
+  height: 380px;
+  background-color: #f8f9fa;
+  border: 1px solid #dee2e6;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.image-label {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.add-img-placeholder {
+  text-align: center;
+  color: #495057;
+  color: var(--color-surface-lowest);
+}
+
+.plus-icon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.inputs-column {
+  flex-grow: 1; 
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.submit-btn:hover {
+  background-color: var(--color-primary);
+  color: var(--color-on-orimary);
+}
+
+.player-conatainer-admin {
+  height: 130px;
+}
+
+.image-container-admin {
+  height: 100%;
+  width: 80px;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  vertical-align: middle;
+  object-position: top;
+}
+
+.player-conatainer-admin {
+  display: flex;
+  gap: 16px;
+  padding: 16px;
+  background-color: var(--color-surface-low);
+}
+
+.player-details-admin-container {
+  display: grid;
+  gap: 4px;
+}
+
+.players-admin {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  gap: 32px;
+}
+
+.admin-player {
+  padding: 32px;
+}
+
+.input-admin {
+  border-radius: 0px;
+  background: var(--color-surface-lowest);
+  border: none;
+  height: 54px;
+  color: var(--color-on-surface);
+}
+
+
 @media (max-width: 1024px) {
   .footer-details {
     display: grid;
@@ -462,7 +607,6 @@ hr {
 
 @media (max-width: 820px) {
   :root {
-    --body-base: 16px;
     --label-base: 12px;
     --label-sm: 10px;
     --header-xl: 5rem;
@@ -482,6 +626,7 @@ hr {
 @media (max-width: 768px) {
   :root {
     --header-xl: 4rem;
+    --body-base: 16px;
   }
 
   .nav_bar {
@@ -513,7 +658,7 @@ hr {
 
 }
 
-@media (max-width: 412px) {
+@media (max-width: 700px) {
 
   :root {
     --header-xl: 2rem;
@@ -544,6 +689,12 @@ hr {
   .nav-btn-container {
     display: none;
   }
+
+  .service-icon-container {
+    height: 50px;
+    width: 50px;
+  }
+
 }
 
 

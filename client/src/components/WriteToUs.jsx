@@ -9,22 +9,27 @@ function WriteToUs() {
             </div>
             <form className="write-to-us-info">
                     <TextInput 
+                        className="text-input-field"
                         name="fullName"
                         label="Full name"
                     />
                     <TextInput 
+                        className="text-input-field"
                         name="title"
                         label="Title"
                     />
                     <TextInput 
+                        className="text-input-field"
                         name="tel"
                         label="Telephone"
                     />
                     <TextInput 
+                        className="text-input-field"
                         name="email"
                         label="E-mail"
                     />
                     <TextInputXl 
+                        className="text-input-field"
                         rows="10"
                         name="message"
                         label="Message"

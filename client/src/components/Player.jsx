@@ -5,7 +5,7 @@ function Player(props) {
             <div className="image-container">
                 {imageUrl ? (
                     <img 
-                    className="player-image"
+                    className="image"
                     src={imageUrl} 
                     alt={name} 
                 />

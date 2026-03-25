@@ -2,6 +2,7 @@ import { useState } from 'react';
 import {BrowserRouter, Routes, Route} from "react-router-dom"
 import Home from '../pages/Home';
 import Admin from '../pages/Admin';
+import Login  from '../pages/Login';
 
 function App() {
 
@@ -10,6 +11,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Home/>}/>
         <Route path="/admin" element={<Admin/>}/>
+        <Route path="/login" element={<Login/>}/>
         <Route path="*" element={<h2>404 - Page Not Found</h2>} />
       </Routes>
     </BrowserRouter>
