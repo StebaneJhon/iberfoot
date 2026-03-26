@@ -8,6 +8,7 @@ function Admin() {
 
     const [players, setPlayers] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [selectedPlayer, setSelectedPlayer] = useState(null);
     
     useEffect(() => {
         fetch(API_URL)
@@ -21,31 +22,49 @@ function Admin() {
         })
     }
 
-    function toggleModal() {
-        setIsModalOpen(!isModalOpen);
+    function onEdited(player) {
+        console.log(player)
+        setPlayers(prePlayers => {
+            prePlayers.forEach ((p, index) => {
+                if(p.id === player.id) {
+                    prePlayers[index] = player
+                }
+            })
+            console.log(player)
+            return prePlayers
+        })
+    }
+
+    function openAddModal() {
+        setSelectedPlayer(null);
+        setIsModalOpen(true);
+    }
+
+    function openEditModal(player) {
+        setSelectedPlayer(player);
+        setIsModalOpen(true);
+    }
+
+    function closeModal() {
+        setSelectedPlayer(null)
+        setIsModalOpen(false);
     }
 
     return (
         <div className="admin-player">
-            <PlayersAdmin players={players}/>
-            <button className="add-new-btn" onClick={toggleModal}>
+            <PlayersAdmin players={players} onEdit={openEditModal}/>
+            <button className="add-new-btn" onClick={openAddModal}>
                 + Add New Player
             </button>
 
             { isModalOpen && (
                 <div className="modal-overlay">
                     <div className="modal-content">
-                        <button className="close-modal-btn" onClick={toggleModal}>&times;</button>
-                        <InsertPlayer closeModal={toggleModal} onNewPlayer={onNewPlayer} />
+                        <InsertPlayer closeModal={closeModal} onNewPlayer={onNewPlayer} playerToEdit={selectedPlayer} onClose={closeModal} onEdited={onEdited}/>
                     </div>
                 </div>
             )}
 
-        {/*
-            <InsertPlayer 
-                onNewPlayer={onNewPlayer}
-            />
-        */}
         </div>
     )
 }

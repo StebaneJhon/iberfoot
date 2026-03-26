@@ -1,0 +1,79 @@
+.insert-player-form {
+  display: grid;
+  gap: 16px;
+}
+
+.input-admin {
+  border-radius: 0px;
+  background: var(--color-surface-low);
+  border: none;
+  height: 54px;
+  color: var(--color-on-surface);
+  padding: 0 16px;
+}
+
+.submit-btn:hover {
+  background-color: var(--color-primary);
+  color: var(--color-on-orimary);
+}
+
+.form-layout-row {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+}
+
+.player-img-upload-box {
+  width: 357px;
+  height: 380px;
+  background-color: #f8f9fa;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+}
+
+.image-label {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.add-img-placeholder {
+  text-align: center;
+  color: #495057;
+  color: var(--color-surface-lowest);
+}
+
+.plus-icon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.inputs-column {
+  flex-grow: 1; 
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.close-modal-btn {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+.insert-player-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 16px;
+}

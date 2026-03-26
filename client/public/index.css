@@ -483,66 +483,6 @@ button {
   color: var(--color-surface-lowest);
 }
 
-.insert-player-form {
-  display: grid;
-  gap: 16px;
-  padding: 16px;
-  background-color: var(--color-surface-low);
-  margin-top: 32px;
-}
-
-.form-layout-row {
-  display: flex;
-  gap: 30px;
-  align-items: flex-start;
-  margin-bottom: 20px;
-}
-
-.player-img-upload-box {
-  width: 357px;
-  height: 380px;
-  background-color: #f8f9fa;
-  border: 1px solid #dee2e6;
-  cursor: pointer;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  overflow: hidden;
-}
-
-.image-label {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
-}
-
-.add-img-placeholder {
-  text-align: center;
-  color: #495057;
-  color: var(--color-surface-lowest);
-}
-
-.plus-icon {
-  font-size: 3rem;
-  display: block;
-  margin-bottom: 10px;
-}
-
-.inputs-column {
-  flex-grow: 1; 
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-}
-
-.submit-btn:hover {
-  background-color: var(--color-primary);
-  color: var(--color-on-orimary);
-}
-
 .player-conatainer-admin {
   height: 130px;
 }
@@ -582,14 +522,6 @@ button {
   padding: 32px;
 }
 
-.input-admin {
-  border-radius: 0px;
-  background: var(--color-surface-lowest);
-  border: none;
-  height: 54px;
-  color: var(--color-on-surface);
-}
-
 /* The background that covers the whole screen */
 .modal-overlay {
   position: fixed;
@@ -606,25 +538,13 @@ button {
 
 /* The box containing the form */
 .modal-content {
-  background: #343a40; /* Match your dark form theme */
-  padding: 40px;
-  border-radius: 8px;
+  background: var(--color-surface-lowest); /* Match your dark form theme */
+  padding: 16px;
   position: relative;
   width: 90%;
   max-width: 800px;
   box-shadow: 0 10px 30px rgba(0,0,0,0.5);
   animation: slideIn 0.3s ease-out;
-}
-
-.close-modal-btn {
-  position: absolute;
-  top: 15px;
-  right: 20px;
-  background: none;
-  border: none;
-  color: white;
-  font-size: 30px;
-  cursor: pointer;
 }
 
 .add-new-btn {

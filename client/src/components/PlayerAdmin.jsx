@@ -1,12 +1,18 @@
 function PlayerAdmin(props) {
-    const {name, position, team, imageUrl} = props
+    const { player, onEdit } = props
+    const { name, position, team, image } = player
+
+    function handleEdit() {
+        onEdit(player)
+    }
+
     return (
-        <div className="player-conatainer-admin">
+        <div className="player-conatainer-admin" onClick={handleEdit}>
             <div className="image-container-admin">
-                {imageUrl ? (
+                {image ? (
                     <img 
                     className="image"
-                    src={imageUrl} 
+                    src={image} 
                     alt={name} 
                 />
                 ) : (

@@ -1,19 +1,22 @@
 import PlayerAdmin from "./PlayerAdmin"
 
 function PlayersAdmin(props) {
-    const {players} = props
+    const {players, onEdit} = props
+
+    function handleEdit(player) {
+        onEdit(player)
+    }
+
     return (
         <div className="players-container-admin">
             <h2>PLAYERS</h2>
             <div className="players-admin">
-                { players.map((player) => {
+                { players.map((p) => {
                     return (
-                            <div key={player.id}>
+                            <div key={p.id}>
                                 <PlayerAdmin 
-                                    name={player.name}
-                                    position={player.position}
-                                    team={player.team}
-                                    imageUrl={player.image}
+                                    onEdit={handleEdit}
+                                    player={p}
                                 />
                             </div>
                         )

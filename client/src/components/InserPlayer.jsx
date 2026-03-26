@@ -1,7 +1,10 @@
 import { useState, useEffect } from "react";
 import TextInput from "./TextInput";
+import "../../public/insert-player.css"
 
 function InsertPlayer(props) {
+
+    const {onNewPlayer, onEdited, closeModal, playerToEdit, onClose} = props
 
     const [player, setPlayer] = useState({
         name: "",
@@ -12,10 +15,25 @@ function InsertPlayer(props) {
 
     const [file, setFile] = useState(null);
     const [preview, setPreview] = useState(null);
+    const [fileInputKey, setFileInputKey] = useState(Date.now());
+
+    const isEditMode = Boolean(playerToEdit);
+
+    useEffect(function() {
+        if (isEditMode) {
+            console.log(playerToEdit)
+            setPlayer({
+                name: playerToEdit.name || "", 
+                position: playerToEdit.position || "",
+                age: playerToEdit.age || "",
+                team: playerToEdit.team || "",
+            });
+            setPreview(playerToEdit.image || null);
+        }
+    }, [playerToEdit, isEditMode]);
 
     useEffect(function() {
         if (!file) {
-            setPreview(null);
             return;
         }
 
@@ -35,8 +53,9 @@ function InsertPlayer(props) {
         });
     }
 
-    const addPlayer = async (event) => {
+    async function handleSubmit(event) {
         event.preventDefault();
+
         if (!player.name) return alert ("Name is required!");
 
         const formatData = new FormData();
@@ -44,11 +63,22 @@ function InsertPlayer(props) {
         formatData.append("position", player.position);
         formatData.append("age", player.age);
         formatData.append("team", player.team);
-        if (file) formatData.append("image", file);
+        if (file) {
+            formatData.append("image", file);
+        } else if (isEditMode && playerToEdit.image) {
+            formatData.append("image", playerToEdit.image);
+        }
+            
+            
+            
+        
+        const url = isEditMode ? `/api/players/${playerToEdit.id}` : '/api/players';
+        const method = isEditMode ? 'PUT' : 'POST';
 
         try {
-            const response = await fetch('/api/players', {
-                method: 'POST',
+
+            const response = await fetch(url, {
+                method: method,
                 body: formatData
             });
 
@@ -64,21 +94,32 @@ function InsertPlayer(props) {
                     team: "",
                 });
                 setFile(null);
+                setFileInputKey(Date.now());
                 const data = await response.json();
-                const newPlayer = data[0];
-                props.onNewPlayer(newPlayer);
-                props.closeModal();
+                const newPlayer = data;
+                // To be updated
+                if (isEditMode) {
+                    onEdited(newPlayer);
+                } else {
+                    onNewPlayer(newPlayer);
+                }
+
+                closeModal();
             }
+
         } catch (error) {
-            console.log("Network or parsing error:", error);
+             console.log("Network or parsing error:", error);
         }
 
     }
 
     return <div>
-        <form className="insert-player-form" onSubmit={addPlayer} >
-
-            <h2>ADD PLAYER</h2>
+        <div className="insert-player-header">
+            <h2>{ isEditMode ? "EDIT PLAYER" : "ADD PLAYER" }</h2>
+            <button className="close-modal-btn" onClick={onClose}>&times;</button>
+        </div>
+        
+        <form className="insert-player-form" onSubmit={handleSubmit} >
 
             <div className="form-layout-row">
                 <div className="player-img-upload-box">
@@ -93,12 +134,12 @@ function InsertPlayer(props) {
                             )}
                     </label>
                     <input 
+                        key={fileInputKey}
                         id="file-input" 
                         type="file" 
                         accept="image/*"
                         onChange={(e) => setFile(e.target.files[0])} 
                         style={{ display: 'none' }} // Hide the actual input
-                        value={file ? undefined : ""}
                     />
                 </div>
                 <div className="inputs-column">
@@ -137,7 +178,7 @@ function InsertPlayer(props) {
                 </div>
             </div>
             
-            <button className="submit-btn" type="submit" > Submit </button>
+            <button className="submit-btn" type="submit" > { isEditMode ? "Save Changes" : "Submit" } </button>
         </form>
     </div>
 };
