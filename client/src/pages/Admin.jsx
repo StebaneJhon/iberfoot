@@ -7,6 +7,7 @@ const API_URL = '/api/players'
 function Admin() {
 
     const [players, setPlayers] = useState([]);
+    const [isModalOpen, setIsModalOpen] = useState(false);
     
     useEffect(() => {
         fetch(API_URL)
@@ -20,12 +21,31 @@ function Admin() {
         })
     }
 
+    function toggleModal() {
+        setIsModalOpen(!isModalOpen);
+    }
+
     return (
         <div className="admin-player">
             <PlayersAdmin players={players}/>
+            <button className="add-new-btn" onClick={toggleModal}>
+                + Add New Player
+            </button>
+
+            { isModalOpen && (
+                <div className="modal-overlay">
+                    <div className="modal-content">
+                        <button className="close-modal-btn" onClick={toggleModal}>&times;</button>
+                        <InsertPlayer closeModal={toggleModal} onNewPlayer={onNewPlayer} />
+                    </div>
+                </div>
+            )}
+
+        {/*
             <InsertPlayer 
                 onNewPlayer={onNewPlayer}
             />
+        */}
         </div>
     )
 }

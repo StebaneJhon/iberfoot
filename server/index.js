@@ -51,6 +51,7 @@ app.post('/api/players', upload.single('image'), async (req, res) => {
 });
 
 app.delete('/api/players/:id', async (req, res) => {
+  
   try {
     await pool.query("DELETE FROM players WHERE id = $1", [req.params.id]);
   } catch (err) {

@@ -66,8 +66,8 @@ function InsertPlayer(props) {
                 setFile(null);
                 const data = await response.json();
                 const newPlayer = data[0];
-                props.onNewPlayer(newPlayer)
-                console.log("Response: ", response.body)
+                props.onNewPlayer(newPlayer);
+                props.closeModal();
             }
         } catch (error) {
             console.log("Network or parsing error:", error);
