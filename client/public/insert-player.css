@@ -77,3 +77,15 @@
     align-items: center;
     margin-bottom: 16px;
 }
+
+@media (max-width: 768px) {
+    .form-layout-row {
+        display: grid;
+        gap: 16px;
+    }
+
+    .image-container-admin {
+        height: 300x;
+        width: 300px;
+    }
+}

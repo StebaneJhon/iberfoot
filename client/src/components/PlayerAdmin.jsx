@@ -13,7 +13,7 @@ function PlayerAdmin(props) {
     function handleDelete() {
         onDelete(id)
     }
-    // onClick={handleEdit}
+
     return (
         <div className="player-conatainer-admin" >
             <div className="image-container-admin">
@@ -34,12 +34,10 @@ function PlayerAdmin(props) {
                 <p className="player-admin player-name" >{name}</p>
                 <p className="player-admin player-team" >{team}</p>
             </div>
-            <button className="delete-player-btn" onClick={handleEdit}>
-                <ModeEditSharpIcon />
-            </button>
-            <button className="delete-player-btn" onClick={handleDelete}>
-                <DeleteSharpIcon />
-            </button>
+            <div className="action-btn-container">
+                <button className="player-btn" onClick={handleEdit}><ModeEditSharpIcon /></button>
+                <button className="player-btn" onClick={handleDelete}> <DeleteSharpIcon /></button>
+            </div>
         </div>
     )
 };

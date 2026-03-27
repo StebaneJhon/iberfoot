@@ -16,10 +16,25 @@
   width: 100%;
 }
 
-.delete-player-btn {
+.player-btn {
   border: none;
   background-color: var(--color-surface-low);
   color: rgba(250, 250, 250, 1);
   cursor: pointer;
   z-index: 10;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.action-btn-container {
+  max-width: 48px;
+  width: 100%;
+  display: grid;
+}
+
+@media (max-width: 412px) {
+  .image-container-admin {
+    width: 100px;
+  }
 }
