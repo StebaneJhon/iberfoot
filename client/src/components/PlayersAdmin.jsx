@@ -1,10 +1,23 @@
 import PlayerAdmin from "./PlayerAdmin"
 
 function PlayersAdmin(props) {
-    const {players, onEdit} = props
+    const {players, onEdit, onDelete} = props
 
     function handleEdit(player) {
         onEdit(player)
+    }
+
+    async function handleDelete(id) {
+        if (window.confirm("Are you sure you want to delete this player?")) {
+            try {
+                const response = await fetch(`/api/players/${id}`, { method: 'DELETE' });
+                if (response.ok) {
+                    onDelete(id)
+                }
+            } catch (err) {
+                console.error(err);
+            }
+        }
     }
 
     return (
@@ -17,6 +30,7 @@ function PlayersAdmin(props) {
                                 <PlayerAdmin 
                                     onEdit={handleEdit}
                                     player={p}
+                                    onDelete={handleDelete}
                                 />
                             </div>
                         )

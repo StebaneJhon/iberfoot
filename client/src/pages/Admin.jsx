@@ -23,15 +23,20 @@ function Admin() {
     }
 
     function onEdited(player) {
-        console.log(player)
         setPlayers(prePlayers => {
             prePlayers.forEach ((p, index) => {
                 if(p.id === player.id) {
                     prePlayers[index] = player
                 }
             })
-            console.log(player)
             return prePlayers
+        })
+    }
+
+    function onDeleted(id) {
+        setPlayers(prePlayers => {
+            
+            return prePlayers.filter(player => player.id !== id);
         })
     }
 
@@ -52,7 +57,7 @@ function Admin() {
 
     return (
         <div className="admin-player">
-            <PlayersAdmin players={players} onEdit={openEditModal}/>
+            <PlayersAdmin players={players} onEdit={openEditModal} onDelete={onDeleted}/>
             <button className="add-new-btn" onClick={openAddModal}>
                 + Add New Player
             </button>

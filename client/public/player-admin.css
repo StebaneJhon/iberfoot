@@ -1,0 +1,25 @@
+.player-conatainer-admin {
+  height: 130px;
+  display: flex;
+  justify-content: space-between;
+  flex-direction: row;
+}
+
+.image-container-admin {
+  height: 100%;
+  width: 160px;
+}
+
+.player-details-admin-container {
+  display: grid;
+  gap: 4px;
+  width: 100%;
+}
+
+.delete-player-btn {
+  border: none;
+  background-color: var(--color-surface-low);
+  color: rgba(250, 250, 250, 1);
+  cursor: pointer;
+  z-index: 10;
+}
