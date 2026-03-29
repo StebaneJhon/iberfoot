@@ -19,3 +19,15 @@ CREATE TABLE coaches (
     team TEXT,
     image TEXT
 );
+
+CREATE TABLE contacts (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    email VARCHAR(255),
+	telephone VARCHAR(20),
+    title VARCHAR(255),
+    message TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+	CONSTRAINT email_or_phone_required 
+    CHECK (email IS NOT NULL OR telephone IS NOT NULL)
+);

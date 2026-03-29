@@ -6,6 +6,7 @@ import path from "path";
 import fs from "fs";
 import 'dotenv/config';
 import console from 'console';
+import nodemailer from "nodemailer"
 
 const app = express();
 const port = 3000;
@@ -24,6 +25,14 @@ const storage = multer.diskStorage({
 });
 const upload = multer({ storage: storage });
 app.use('/uploads', express.static('uploads'));
+
+const transporter = nodemailer.createTransport({
+  service: "gmail",
+  auth: {
+    user: process.env.EMAIL_USER,
+    pass: process.env.EMAIL_PASS
+  }
+});
 
 
 app.get('/api/players', async (req, res) => {
@@ -142,6 +151,38 @@ app.delete("/api/coaches/:id", async (req, res) => {
   } catch (err) {
     res.status(500).send(err.message);
   }
+});
+
+app.post("/api/contact", async (req, res) => {
+  const { name, title, telephone, email, message } = req.body;
+
+  try {
+      const dbResult = await pool.query(
+        "INSERT INTO contacts (name, title, telephone, email, message) VALUES ($1, $2, $3, $4, $5) RETURNING *",
+        [name, title, telephone, email, message]
+      );
+
+      const mailOptions = {
+        from: process.env.EMAIL_USER,
+        to: process.env.RECEIVER_EMAIL,
+        subject: `Iberfoot message from a ${title}`,
+        html: `
+          <h3>Iberfoot message from a ${title}</h3>
+          <p><strong>Name:</strong> ${name}</p>
+          <p><strong>Email:</strong> ${email}</p>
+          <p><strong>Telephone:</strong> ${telephone}</p>
+          <p><strong>Message:</strong></p>
+          <p>${message}</p>
+        `,
+      };
+      await transporter.sendMail(mailOptions);
+
+      res.status(201).json({ success: true, message: "Message saved and email sent!" });
+  } catch (err) {
+    console.error("Contact Error:", err.message);
+    res.status(500).json({ success: false, error: "Something went wrong on our end." });
+  }
+
 });
 
 app.listen(port, () => {

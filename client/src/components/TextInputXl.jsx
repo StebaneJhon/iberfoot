@@ -1,5 +1,5 @@
 function TextInputXl(props) {
-    const {name, label, rows} = props
+    const {name, label, rows, value, onChange} = props
     return (
         <div className="text-input-container  text-input-xl-container">
             <label className="text-input-label text-input-xl-label" htmlFor={name}>{label}</label>
@@ -9,6 +9,8 @@ function TextInputXl(props) {
                 rows={rows ? rows : 10}
                 name={name}
                 id={name}
+                value={value}
+                onChange={onChange}
             />
         </div>
     )
