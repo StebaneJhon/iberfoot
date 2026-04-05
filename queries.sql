@@ -31,3 +31,10 @@ CREATE TABLE contacts (
 	CONSTRAINT email_or_phone_required 
     CHECK (email IS NOT NULL OR telephone IS NOT NULL)
 );
+
+CREATE TABLE players_dynamic_photos (
+    id SERIAL PRIMARY KEY,
+    player_id INTEGER REFERENCES players(id),
+    url TEXT NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+);
