@@ -28,6 +28,7 @@ function HorizontalSlider({ players }) {
           return (
             <div key={player.id}>
               <Player 
+                id={player.id}
                 name={player.name}
                 position={player.position}
                 team={player.team}

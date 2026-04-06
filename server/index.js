@@ -63,6 +63,33 @@ app.get('/api/players', async (req, res) => {
   }
 });
 
+app.get('/api/players/:id', async (req, res) => {
+    const { id } = req.params;
+    try {
+        const query = `
+            SELECT 
+                p.*, 
+                COALESCE(
+                    JSON_AGG(
+                        JSON_BUILD_OBJECT('id', dp.id, 'url', dp.url)
+                    ) FILTER (WHERE dp.id IS NOT NULL), 
+                    '[]'
+                ) AS dynamic_photos
+            FROM players p
+            LEFT JOIN players_dynamic_photos dp ON p.id = dp.player_id
+            WHERE p.id = $1
+            GROUP BY p.id;
+        `;
+        const result = await pool.query(query, [id]);
+        
+        if (result.rows.length === 0) return res.status(404).send("Player not found");
+        
+        res.json(result.rows[0]);
+    } catch (err) {
+        res.status(500).send(err.message);
+    }
+});
+
 app.post('/api/players', uploadFields, async (req, res) => {
   const {name, position, age, team, transfermarkt} = req.body
 

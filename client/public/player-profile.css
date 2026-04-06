@@ -1,0 +1,106 @@
+span {
+    font-weight: 700;
+}
+
+main {
+    flex: 1;
+    width: 100%;
+}
+
+.profile-page-bg {
+    background-color: var(--color-surface-lowest);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.player-profile-container {
+    display: flex;
+    width: 100%;
+    min-height: 100vh;
+    background-color: var(--color-surface-lowest);
+}
+
+.profile-sidebar {
+    width: 25vw;
+    background-color: var(--color-surface-low);
+    padding: var(--space-lg);
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-image-container {
+    width: 100%;
+    height: 350px;
+    aspect-ratio: 1 / 1;
+    margin-bottom: var(--space-base);
+}
+
+.player-profile-name {
+    margin-bottom: var(--space-base);
+    text-transform: uppercase;
+}
+
+.player-profile-position {
+    margin-bottom: var(--space-sm);
+}
+
+.player-profile-team {
+    margin-bottom: var(--space-sm);
+}
+
+.player-profile-age {
+    margin-bottom: var(--space-sm);
+}
+
+.social-btn-container {
+    display: grid;
+    max-width: 40px;
+    background-color: var(--color-surface-lowest);
+}
+
+.social-btn {
+    color: var(--color-on-primary);
+    text-decoration: none;
+    font-weight: 700;
+}
+
+.profile-gallery {
+    display: grid;
+    gap: var(--space-lg);
+    grid-template-columns: repeat(2, 1fr);
+    grid-auto-rows: 400px;
+    overflow-y: auto;
+    padding: var(--space-lg);
+}
+
+.profile-gallery-empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    min-height: 100vh;
+}
+
+.gallery-item {
+    background-color: var(--color-primary); 
+    width: 100%;
+    height: 100%;
+}
+
+.gallery-item img {
+    display: block;
+}
+
+@media (max-width: 900px) {
+    .player-profile-container {
+        flex-direction: column;
+    }
+    .profile-sidebar {
+        width: 100%;
+    }
+    .profile-gallery {
+        grid-template-columns: 1fr;
+    }
+}

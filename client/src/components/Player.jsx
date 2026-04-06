@@ -1,7 +1,9 @@
+import { Link } from 'react-router-dom';
+
 function Player(props) {
-    const {name, position, team, imageUrl} = props
+    const {id, name, position, team, imageUrl} = props
     return (
-        <div className="player-container">
+        <Link to={`/player/${id}`} className="player-container">
             <div className="image-container">
                 {imageUrl ? (
                     <img 
@@ -19,7 +21,7 @@ function Player(props) {
             <p className="player-details-texts player-position" >{position}</p>
             <p className="player-details-texts  player-name" >{name}</p>
             <p className="player-details-texts  player-team" >{team}</p>
-        </div>
+        </Link>
     )
 };
 

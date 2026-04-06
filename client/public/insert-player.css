@@ -127,7 +127,6 @@
     opacity: 1;
 }
 
-/* Style for new photos vs existing if you want to differentiate */
 .new-photo {
     border: 2px dashed #007bff;
 }
