@@ -1,10 +1,13 @@
 import {useEffect, useState} from "react"
+import { useNavigate } from 'react-router-dom';
 import InsertPlayer from "../components/InserPlayer";
 import PlayersAdmin from "../components/PlayersAdmin";
 
 const API_URL = '/api/players'
 
 function Admin() {
+
+    const navigate = useNavigate();
 
     const [players, setPlayers] = useState([]);
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -35,7 +38,6 @@ function Admin() {
 
     function onDeleted(id) {
         setPlayers(prePlayers => {
-            
             return prePlayers.filter(player => player.id !== id);
         })
     }
@@ -55,12 +57,19 @@ function Admin() {
         setIsModalOpen(false);
     }
 
+    function handleLogout() {
+        localStorage.removeItem('token');
+        navigate('/');
+    }
+
     return (
         <div className="admin-player">
             <PlayersAdmin players={players} onEdit={openEditModal} onDelete={onDeleted}/>
             <button className="add-new-btn" onClick={openAddModal}>
                 + Add New Player
             </button>
+
+            <button className="add-new-btn" onClick={handleLogout}>Logout</button>
 
             { isModalOpen && (
                 <div className="modal-overlay">

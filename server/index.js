@@ -6,13 +6,28 @@ import path from "path";
 import fs from "fs";
 import 'dotenv/config';
 import console from 'console';
-import nodemailer from "nodemailer"
+import nodemailer from "nodemailer";
+import jwt from 'jsonwebtoken';
+import bcrypt from 'bcryptjs';
 
 const app = express();
 const port = 3000;
 
 app.use(cors());
 app.use(express.json());
+
+const verifyToken = (req, res, next) => {
+  const token = req.headers['authorization']?.split(' ')[1]; // Get token from "Bearer <token>"
+  
+  if (!token) return res.status(403).json({ message: "No token provided." });
+
+  jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
+    if (err) return res.status(401).json({ message: "Unauthorized! Token expired or invalid." });
+    req.userId = decoded.id; // Store user info for later use
+    next();
+  });
+};
+
 const storage = multer.diskStorage({
   destination: (req, file, cb) => {
     const dir = './uploads';
@@ -39,10 +54,28 @@ const transporter = nodemailer.createTransport({
   }
 });
 
+app.post('/api/login', async (req, res) => {
+  const { username, password } = req.body;
+
+  try {
+    const result = await pool.query("SELECT * FROM admins WHERE name = $1", [username]);
+    if (result.rows.length === 0) return res.status(401).json({ message: "Invalid credentials" });
+
+    const user = result.rows[0];
+    const isMatch = await bcrypt.compare(password, user.key);
+
+    if (!isMatch) return res.status(401).json({ message: "Invalid credentials" });
+
+    const token = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '1h' });
+    res.json({ token, username: user.name });
+  } catch (err) {
+    res.status(500).send("Server error");
+  }
+});
 
 app.get('/api/players', async (req, res) => {
   try {
-    //const result = await pool.query("SELECT * FROM players;");
+
     const query = `
       SELECT 
         p.*, 
@@ -90,7 +123,7 @@ app.get('/api/players/:id', async (req, res) => {
     }
 });
 
-app.post('/api/players', uploadFields, async (req, res) => {
+app.post('/api/players', verifyToken, uploadFields, async (req, res) => {
   const {name, position, age, team, transfermarkt} = req.body
 
   const image = req.files['image'] 
@@ -136,7 +169,7 @@ app.post('/api/players', uploadFields, async (req, res) => {
   }
 });
 
-app.put('/api/players/:id', uploadFields, async (req, res) => {
+app.put('/api/players/:id', verifyToken, uploadFields, async (req, res) => {
 
   const { id } = req.params;
   const { name, position, age, team, transfermarkt, keepIds } = req.body;
@@ -205,7 +238,7 @@ app.put('/api/players/:id', uploadFields, async (req, res) => {
   
 });
 
-app.delete('/api/players/:id', async (req, res) => {
+app.delete('/api/players/:id', verifyToken, async (req, res) => {
 
   const { id } = req.params
 
@@ -265,7 +298,7 @@ app.get('/api/coaches', async (req, res) => {
   }
 });
 
-app.post("/api/coaches", async (req, res) => {
+app.post("/api/coaches", verifyToken, async (req, res) => {
   const {name, age, team, image} = req.body
   try {
     const result = await pool.query(
@@ -278,7 +311,7 @@ app.post("/api/coaches", async (req, res) => {
   }
 });
 
-app.delete("/api/coaches/:id", async (req, res) => {
+app.delete("/api/coaches/:id", verifyToken, async (req, res) => {
   try {
     await pool.query("DELETE FROM coaches WHERE id = $1", [req.params.id]);
   } catch (err) {

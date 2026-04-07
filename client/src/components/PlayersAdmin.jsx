@@ -10,7 +10,23 @@ function PlayersAdmin(props) {
     async function handleDelete(id) {
         if (window.confirm("Are you sure you want to delete this player?")) {
             try {
-                const response = await fetch(`/api/players/${id}`, { method: 'DELETE' });
+
+                const token = localStorage.getItem('token');
+
+                const response = await fetch(`/api/players/${id}`, { 
+                    method: 'DELETE', 
+                    headers: {
+                        'Authorization': `Bearer ${token}` 
+                    }, 
+                });
+
+                if (response.status === 401) {
+                    alert("Your session has expired. Please log in again.");
+                    localStorage.removeItem('token'); 
+                    window.location.href = "/login";   
+                    return;
+                }
+
                 if (response.ok) {
                     onDelete(id)
                 }

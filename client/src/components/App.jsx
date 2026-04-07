@@ -4,6 +4,7 @@ import Home from '../pages/Home';
 import Admin from '../pages/Admin';
 import Login  from '../pages/Login';
 import PlayerProfile from '../pages/PlayerProfile';
+import ProtectedRoute from './ProtectedRoute';
 
 function App() {
 
@@ -11,8 +12,8 @@ function App() {
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home/>}/>
-        <Route path="/admin" element={<Admin/>}/>
-        <Route path="/login" element={<Login/>}/>
+        <Route path="/admin" element={<ProtectedRoute><Admin/></ProtectedRoute>}/>
+        <Route path="/login" element={<Login/>}/> 
         <Route path="/player/:id" element={<PlayerProfile />} />
         <Route path="*" element={<h2>404 - Page Not Found</h2>} />
       </Routes>

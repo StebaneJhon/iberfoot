@@ -120,10 +120,22 @@ function InsertPlayer(props) {
 
         try {
 
+            const token = localStorage.getItem('token');
+
             const response = await fetch(url, {
                 method: method,
+                headers: {
+                    'Authorization': `Bearer ${token}` 
+                },
                 body: formatData
             });
+
+            if (response.status === 401) {
+                alert("Your session has expired. Please log in again.");
+                localStorage.removeItem('token'); 
+                window.location.href = "/login";   
+                return;
+            }
 
             if (!response.ok) {
                 const errorText = await response.text();
