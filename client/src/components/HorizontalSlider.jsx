@@ -24,27 +24,26 @@ function HorizontalSlider({ players }) {
   return (
     <div className="slider-container">
       <div className="slider-content" ref={scrollRef}>
-        {players.map(function(player) {
+        {players.slice(0, 3).map(function(player) {
           return (
-            <div key={player.id}>
               <Player 
+                key={player.id}
                 id={player.id}
                 name={player.name}
                 position={player.position}
                 team={player.team}
                 imageUrl={player.image}
               />
-            </div>
           );
         })}
       </div>
       
-      <div className='nav-btn-container'>
+      {/* <div className='nav-btn-container'>
         <button className="nav-btn left" onClick={function() { scroll('left') }}> <WestIcon /> </button>
         <button className="nav-btn right" onClick={function() { scroll('right') }}> <EastIcon /> </button>
-      </div>
+      </div> */}
 
-      <button className='btn-nav-bar view-all-players-btn'>View all</button>
+      <button className='view-all-players-btn'> <EastIcon /> VIEW ALL PLAYERS</button>
       
     </div>
   );
