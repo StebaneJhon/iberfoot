@@ -1,0 +1,33 @@
+.all-players {
+    margin-top: var(--space-xl);
+}
+
+.all-players-container {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+    margin: var(--space-xl);
+}
+
+@media (max-width: 820px) {
+    .all-players {
+        margin-top: var(--space-md);
+    }
+
+    .all-players-container {
+        grid-template-columns: repeat(2, 1fr);
+        gap: var(--space-md);
+        margin: var(--space-md);
+    }
+}
+
+@media (max-width: 700px) {
+    .all-players {
+        margin-top: var(--space-base);
+    }
+    .all-players-container {
+        grid-template-columns: 1fr;
+        gap: var(--space-base);
+        margin: var(--space-base);
+    }
+}

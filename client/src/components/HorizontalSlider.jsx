@@ -1,8 +1,7 @@
 import React, { useRef } from 'react';
 import Player from './Player'; 
-import { AccessAlarm, ThreeDRotation } from '@mui/icons-material';
 import EastIcon from '@mui/icons-material/East';
-import WestIcon from '@mui/icons-material/West';
+import { Link } from 'react-router-dom';
 
 
 function HorizontalSlider({ players }) { 
@@ -37,13 +36,8 @@ function HorizontalSlider({ players }) {
           );
         })}
       </div>
-      
-      {/* <div className='nav-btn-container'>
-        <button className="nav-btn left" onClick={function() { scroll('left') }}> <WestIcon /> </button>
-        <button className="nav-btn right" onClick={function() { scroll('right') }}> <EastIcon /> </button>
-      </div> */}
 
-      <button className='view-all-players-btn'> <EastIcon /> VIEW ALL PLAYERS</button>
+      <Link className='view-all-players-btn' to={"/players"}> <EastIcon /> VIEW ALL PLAYERS</Link>
       
     </div>
   );
