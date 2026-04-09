@@ -34,7 +34,7 @@ body {
 
  .view-all-players-btn {
     color: var(--color-on-surface);
-    background-color: var(--color-surface-lowest);
+    background-color: transparent;
     font-weight: 500;
     padding: 8px 24px;
     width: 100%;
@@ -190,6 +190,13 @@ button {
   border: none;
   color: rgba(250, 250, 250, 1);
   text-decoration: none;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+.btn-nav-bar:hover {
+  color: var(--color-primary);
+  text-decoration: underline;
 }
 
 .view-players-btn {
@@ -198,11 +205,11 @@ button {
     padding: 8px 24px;
 }
 
-.btn-contact-us {
+/* .btn-contact-us {
     background-color: rgba(33, 133, 213, 1);
     padding: 8px 24px;
     margin-left: 8px;
-}
+} */
 
 .hero-texts-container {
     position: absolute;
@@ -337,6 +344,7 @@ button {
     display: grid;
     gap: var(--space-md);
     grid-template-columns: 1fr 1fr;
+    margin-top: var(--space-xl);
 }
 
 .service-content-section {
@@ -397,6 +405,7 @@ button {
   grid-template-rows: 1fr 1fr;
   grid-template-columns: 1fr 1fr;
   gap: var(--space-lg);
+  margin-top: var(--space-xl);
 }
 
 .text-input-xl-container {
@@ -416,6 +425,7 @@ button {
 .write-to-us-info-submint-btn {
   grid-column: span 2;
   background-color: var(--color-primary);
+  color: var(--color-on-primary);
   padding: var(--space-sm) var(--space-sm);
 }
 

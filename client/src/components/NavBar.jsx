@@ -7,8 +7,8 @@ return (
                 <img className="nav-bar-logo" src={logo} alt="iberfoot-logo" />
             </div>
             <div className="container-btn-nav-bar">
-                <a className="btn-nav-bar" href="/">Our services</a>
-                <a className="btn-nav-bar" href="/">Our players</a>
+                <button className="btn-nav-bar" onClick={props.toOurServices}>Our services</button>
+                <button className="btn-nav-bar" onClick={props.toOurPlayers}>Our players</button>
             </div>
         </div>
     )

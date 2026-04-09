@@ -99,7 +99,7 @@ function WriteToUs() {
                         value={formData.message}
                         onChange={handleChange}
                     />
-                    <button className="btn-nav-bar write-to-us-info-submint-btn" type="submit">Send</button>
+                    <button className="write-to-us-info-submint-btn" type="submit">Send</button>
 
                     {status && <p style={{ marginTop: '15px', fontWeight: 'bold' }}>{status}</p>}
             </form>

@@ -18,13 +18,27 @@ function Home() {
             .then(data => setPlayers(data))
     }, []);
 
+    const scrollToSection = (id) => {
+        const element = document.getElementById(id);
+        console.log(id)
+        if (element) {
+            element.scrollIntoView({ behavior: 'smooth' });
+        }
+    };
+
     return <div>
-        <Hero />
-        <Players players={players} />
-        <div className="our-services-section">
+        <Hero 
+            toOurServices={() => scrollToSection("ourService")}
+            toOurPlayers={() => scrollToSection("ourPlayers")}
+            toWriteToUs={() => scrollToSection("writeToUs")}
+        />
+        <div id="ourPlayers">
+            <Players players={players} />
+        </div>
+        <div className="our-services-section" id="ourService">
             <Services />
         </div>
-        <div className="write-to-us-section">
+        <div className="write-to-us-section" id="writeToUs">
             <WriteToUs />
         </div>
         <div className="footer-section">
