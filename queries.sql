@@ -1,6 +1,7 @@
 CREATE TABLE admins (
     id SERIAL PRIMARY KEY,
-    key VARCHAR(100) NOT NULL
+    key VARCHAR(100) NOT NULL,
+    name TEXT NOT NULL,
 );
 
 CREATE TABLE players (
